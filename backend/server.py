@@ -1,18 +1,6 @@
-from flask import Flask
+from web import create_app
 
-app = Flask(__name__)
-
-# Members API Route
-@app.route('/', methods=['GET'])
-@app.route('/home', methods=['GET'])
-def home():
-    return {'members': ['Members1', 'Members2', 'Members3']}
-
-
-@app.route('/contacto', methods=['GET'])
-def contacto_front():
-    return {}
-
+app = create_app()
 
 if __name__ == '__main__':
     app.run(debug=True)

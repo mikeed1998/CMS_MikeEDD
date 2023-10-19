@@ -3,7 +3,7 @@ import { useEffect } from "react";
 function Contacto() {
 
     useEffect(() => {
-    	fetch("/home").then(
+    	fetch("/contacto").then(
       		res => res.json()
     	)
   	})

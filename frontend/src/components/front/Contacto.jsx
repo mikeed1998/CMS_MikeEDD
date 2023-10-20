@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Header from "../partials/Header";
 
 function Contacto() {
 
@@ -9,9 +10,12 @@ function Contacto() {
   	})
 
     return (
-        <div>
-            <h1>Contacto</h1>
-        </div>
+        <>
+        <Header/>
+            <div>
+                <h1>Contacto</h1>
+            </div>
+        </>
     );
 }
 

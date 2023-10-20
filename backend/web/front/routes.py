@@ -1,4 +1,4 @@
-from flask import render_template, url_for, flash, redirect, request, Blueprint
+from flask import render_template, url_for, flash, redirect, request, Blueprint, jsonify
 
 
 front = Blueprint('front', __name__)
@@ -8,7 +8,38 @@ front = Blueprint('front', __name__)
 @front.route('/', methods=['GET'])
 @front.route('/home', methods=['GET'])
 def home():
-    return {'members': ['Members1', 'Members2']}
+    response_data = {
+        'members': ['Members1', 'Members2'],
+        'dinero': [1,2,3,4,5,6,7,8,9]
+    }
+    return jsonify(response_data)
+
+
+@front.route('/procesar_formulario', methods=['POST'])
+def procesar_formulario():
+    if request.method == 'POST':
+        data = request.get_json()
+        nombre = data.get('nombre')
+        correo = data.get('correo')
+
+        nombre += "_SERVER"
+        correo += "_SERVER"
+
+        # Meter a la base de datos
+
+        # Realiza acciones con los datos, como almacenarlos en una base de datos o procesarlos.
+
+        response_data = {
+            'respuesta': [nombre, correo]
+        }
+
+        return jsonify(response_data)  # Envía el JSON de respuesta
+
+
+@front.route('/exito', methods=['GET'])
+def exito():
+    response_data = request.args.get('response')  # Obtén los datos de la respuesta
+    return jsonify(response_data)
 
 
 @front.route('/aboutus', methods=['GET'])

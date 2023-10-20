@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import Contacto from './components/Contacto';
+import Contacto from './components/front/Contacto';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import Aboutus from './components/Aboutus';
+import Aboutus from './components/front/Aboutus';
+import Exito from './components/front/Exito';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +16,7 @@ root.render(
         		<Route path="/home" element={<App/>} />
        	 		<Route path="/aboutus" element={<Aboutus />} />
         		<Route path="/contacto" element={<Contacto/>} />
+				<Route path="/exito" element={<Exito />} />
       		</Routes>
     	</Router>
   	</React.StrictMode>

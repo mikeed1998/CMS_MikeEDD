@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Header from "../partials/Header";
 
 function Aboutus() {
     const [data, setData] = useState([{}])
@@ -16,6 +17,7 @@ function Aboutus() {
 
     return (
         <div>
+            <Header/>
             {(typeof data.acerca === 'undefined') ? (
                 <p>Loading...</p>
             ): (

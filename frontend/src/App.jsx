@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import Header from './components/Header';
+import Header from './components/partials/Header';
 import './App.css';
+import ContactoForm from './components/formularios/ContactoForm';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
         		console.log(data)
       		}
     	)
-  	})
+  	}, [])
 
   	return (
 		<>
@@ -29,6 +30,13 @@ function App() {
         			))
     	  		)}
 	    	</div>
+			<div>
+      			{(typeof data.dinero === 'undefined') ? (
+    	    		<p>Loading...</p>
+	      		): (
+        			data.dinero[3]
+    	  		)}
+	    	</div>
 			<div className="container">
 				<div className="row">
 					<div className="col bg-dark fs-1 fw-bolder text-center text-white">
@@ -36,6 +44,7 @@ function App() {
 					</div>
 				</div>
 			</div>
+			<ContactoForm />
 		</>
     	
   	);

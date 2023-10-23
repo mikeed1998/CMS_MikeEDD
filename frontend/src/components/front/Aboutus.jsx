@@ -5,14 +5,14 @@ function Aboutus() {
     const [data, setData] = useState([{}])
 
     useEffect(() => {
-      fetch("/aboutus").then(
+      	fetch("/aboutus").then(
             res => res.json()
-      ).then(
+      	).then(
             data => {
-              setData(data)
-              console.log(data)
+              	setData(data)
+              	console.log(data)
             }
-      )
+      	)
     })
 
     return (
@@ -25,6 +25,17 @@ function Aboutus() {
                     <p key={i}>{member}</p>
                 ))
             )}
+            {(typeof data.acerca === 'undefined') ? (
+                <p>Loading...</p>
+            ): (
+              	data.basedatos.map((item, i) => (
+                	<div key={i}>
+                    	<h2>{item.title}</h2>
+                    	<p>{item.content}</p>
+						<small>{item.date_posted}</small>
+                	</div>
+            	))
+            )}  
       </div>
     );
 }

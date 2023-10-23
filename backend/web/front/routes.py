@@ -1,4 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint, jsonify
+from web import db, bcrypt
+from web.models import User, Post
+from sqlalchemy import text
 
 
 front = Blueprint('front', __name__)
@@ -42,9 +45,27 @@ def exito():
     return jsonify(response_data)
 
 
+
 @front.route('/aboutus', methods=['GET'])
 def aboutus():
-    return {'acerca': ['Esta es la descripcion de acerca de']}
+    # Crear un objeto text para la consulta SQL
+    query = text("SELECT * FROM post")
+    
+    # Ejecutar la consulta y obtener los resultados
+    result = db.session.execute(query)
+    
+    # Obtener los nombres de las columnas
+    column_names = result.keys()
+    
+    # Convertir los resultados en una lista de diccionarios
+    data = [dict(zip(column_names, row)) for row in result.fetchall()]
+    
+    response_data = {
+        'basedatos': data,
+        'acerca': ['Esta es la descripción de acerca de']
+    }
+
+    return jsonify(response_data)
 
 
 @front.route('/contacto', methods=['GET'])

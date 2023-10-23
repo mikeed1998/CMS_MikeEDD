@@ -10,7 +10,6 @@ function Header() {
         <div>
             <header className="menu-grande py-3" style={{ backgroundColor: "white" }}>
             <div className="row mt-0">
-               
                 <div className="col-10 mx-auto bg-white mt-3 shadow rounded-pill">
                     <div className="row">
                         <div className="col header-btn d-flex align-content-center justify-content-center fs-5 fw-bolder text-center">
